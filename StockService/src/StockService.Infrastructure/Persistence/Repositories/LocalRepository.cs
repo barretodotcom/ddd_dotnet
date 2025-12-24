@@ -11,4 +11,9 @@ public class LocalRepository : Repository<Local, LocalId>, ILocalRepository
     public LocalRepository(AppDbContext context) : base(context)
     {
     }
+    
+    public Local? GetByName(string name)
+    {
+        return DbSet.FirstOrDefault(l => l.Name == name);
+    }
 }

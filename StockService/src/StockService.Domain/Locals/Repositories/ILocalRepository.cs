@@ -6,5 +6,5 @@ namespace StockService.Domain.Locals.Repositories;
 
 public interface ILocalRepository : IRepository<Local, LocalId>
 {
-    
+    Local? GetByName(string name);
 }

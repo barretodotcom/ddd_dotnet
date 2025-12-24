@@ -1,7 +1,9 @@
 using StockService.Application;
+using StockService.Application.DependencyInjection;
 using StockService.Infrastructure;
-using StockService.Infrastructure.DependenciesInjection;
+using StockService.Infrastructure.DependencyInjection;
 using StockService.Infrastructure.Persistence.AppDbContexts;
+using StockService.Infrastructure.Persistence.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>();
 
 // Application & Infrastructure
 builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
