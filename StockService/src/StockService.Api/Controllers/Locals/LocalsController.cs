@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using StockService.Application.Common.Result;
 using StockService.Application.Locals.Commands;
 using StockService.Application.Locals.Services.CreateLocalServices;
 using StockService.Application.Locals.Services.GetLocalService;
@@ -10,7 +11,8 @@ public class LocalsController : BaseController
     private readonly ICreateLocalService _createLocalService;
     private readonly IGetLocalService _getLocalService;
 
-    public LocalsController(ICreateLocalService createLocalService, IGetLocalService getLocalService)
+    public LocalsController(ICreateLocalService createLocalService, IGetLocalService getLocalService,
+        IResultService resultService) : base(resultService)
     {
         _createLocalService = createLocalService;
         _getLocalService = getLocalService;
@@ -27,5 +29,4 @@ public class LocalsController : BaseController
     {
         return Ok(_createLocalService.Execute(command));
     }
-
 }

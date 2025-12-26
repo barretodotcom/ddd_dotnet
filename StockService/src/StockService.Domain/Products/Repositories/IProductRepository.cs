@@ -6,5 +6,5 @@ namespace StockService.Domain.Products.Repositories;
 
 public interface IProductRepository : IRepository<Product, ProductId>
 {
-    
+    public Product? GetByName(string name);
 }

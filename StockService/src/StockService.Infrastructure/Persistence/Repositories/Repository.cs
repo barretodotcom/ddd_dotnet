@@ -3,7 +3,7 @@ using StockService.Domain.Common.Repositories;
 
 namespace StockService.Infrastructure.Persistence.Repositories;
 
-public class Repository<TEntity, TId> : IRepository<TEntity, TId> 
+public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId> 
     where TEntity: class 
     where TId : struct
 {

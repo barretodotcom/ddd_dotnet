@@ -12,4 +12,10 @@ public class ProductRepository : Repository<Product, ProductId>, IProductReposit
     public ProductRepository(AppDbContext context) : base(context)
     {
     }
+
+    public Product? GetByName(string name)
+    {
+        return DbSet.FirstOrDefault(l => l.Name == name);
+    }
+
 }
