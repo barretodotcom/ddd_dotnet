@@ -1,3 +1,4 @@
+using NNotificator.Abstractions;
 using StockService.Application.Common.Result;
 using StockService.Application.Products.Commands;
 using StockService.Application.Products.Service.CreateProductService.Validator;
@@ -13,11 +14,12 @@ public class CreateProductService : ICreateProductService
     private readonly ICreateProductValidatorService _createProductValidatorService;
     private readonly IResultService _resultService;
 
-    public CreateProductService(IProductRepository productRepository, ICreateProductValidatorService createProductValidatorService, IResultService resultService)
+    public CreateProductService(IProductRepository productRepository, ICreateProductValidatorService createProductValidatorService, IResultService resultService, IEventPublisher eventPublisher)
     {
         _productRepository = productRepository;
         _createProductValidatorService = createProductValidatorService;
         _resultService = resultService;
+        
     }
 
     public Product Execute(CreateProductCommand createProductCommand)

@@ -4,6 +4,8 @@ using StockService.Application.Locals.Services.CreateLocalServices;
 using StockService.Application.Locals.Services.GetLocalService;
 using StockService.Application.Products.Service.CreateProductService;
 using StockService.Application.Products.Service.CreateProductService.Validator;
+using StockService.Application.Stocks.Services.CreateStockServices;
+using StockService.Application.Stocks.Services.GetStockServices;
 
 namespace StockService.Application.DependencyInjection;
 
@@ -19,6 +21,11 @@ public static class ApplicationDependencyInjection
         #region Product
         services.AddScoped<ICreateProductService, CreateProductService>();
         services.AddScoped<ICreateProductValidatorService, CreateProductValidatorService>();
+        #endregion
+
+        #region Stock
+        services.AddScoped<ICreateStockService, CreateStockService>();
+        services.AddScoped<IGetStockService, GetStockService>();
         #endregion
         
         #region Result

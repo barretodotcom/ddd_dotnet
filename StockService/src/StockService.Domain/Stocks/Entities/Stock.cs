@@ -17,6 +17,12 @@ public class Stock : AggregateRoot<StockId>
     public Local Local { get; private set; }
     public Product Product { get; private set; }
 
+    public Stock(StockId id, LocalId localId, ProductId productId)
+    {
+        Id = id;
+        LocalId = localId;
+        ProductId = productId;
+    }
     public Stock(StockId id, LocalId localId, ProductId productId, decimal quantity, decimal reservedQuantity)
     {
         Id = id;
@@ -24,6 +30,11 @@ public class Stock : AggregateRoot<StockId>
         ProductId = productId;
         Quantity = quantity;
         ReservedQuantity = reservedQuantity;
+    }
+
+    public void AddQuantity(decimal quantity)
+    {
+        Quantity += quantity;
     }
 
     public void ReserveQuantity(decimal amount)

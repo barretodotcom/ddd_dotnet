@@ -5,5 +5,6 @@ public interface IRepository<TEntity, in TId> where TEntity : class where TId : 
     TEntity Get(TId id);
     void Delete(TEntity id);
     void Add(TEntity entity);
+    void Update(TEntity entity);
     void SaveChanges();
 }

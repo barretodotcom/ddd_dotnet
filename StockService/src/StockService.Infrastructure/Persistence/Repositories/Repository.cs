@@ -3,8 +3,8 @@ using StockService.Domain.Common.Repositories;
 
 namespace StockService.Infrastructure.Persistence.Repositories;
 
-public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId> 
-    where TEntity: class 
+public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
+    where TEntity : class
     where TId : struct
 {
     protected readonly DbSet<TEntity> DbSet;
@@ -29,6 +29,11 @@ public abstract class Repository<TEntity, TId> : IRepository<TEntity, TId>
     public void Add(TEntity entity)
     {
         DbSet.Add(entity);
+    }
+
+    public void Update(TEntity entity)
+    {
+        DbSet.Update(entity);
     }
 
     public void SaveChanges()
