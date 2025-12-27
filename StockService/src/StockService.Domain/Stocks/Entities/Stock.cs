@@ -4,6 +4,7 @@ using StockService.Domain.Products.ValueObjects;
 using StockService.Domain.Locals.ValueObjects;
 using StockService.Domain.Products.Entities;
 using StockService.Domain.Locals.Entities;
+using StockService.Domain.Stocks.StockItems.Entities;
 using StockService.Domain.Stocks.ValueObjects;
 
 namespace StockService.Domain.Stocks.Entities;
@@ -16,6 +17,7 @@ public class Stock : AggregateRoot<StockId>
     public decimal ReservedQuantity { get; private set; }
     public Local Local { get; private set; }
     public Product Product { get; private set; }
+    public List<StockItem> StockItems { get; private set; } = new();
 
     public Stock(StockId id, LocalId localId, ProductId productId)
     {
@@ -35,6 +37,11 @@ public class Stock : AggregateRoot<StockId>
     public void AddQuantity(decimal quantity)
     {
         Quantity += quantity;
+    }
+
+    public void AddItem(StockItem stockItem)
+    {
+        StockItems.Add(stockItem);
     }
 
     public void ReserveQuantity(decimal amount)
